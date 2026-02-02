@@ -1,37 +1,53 @@
-/* Buttons - Primary CTAs use accent color */
+/* ========================================
+   Unified Button System
+   ========================================
+   Single reusable button class for consistent sizing
+   across all buttons on the site.
+   ======================================== */
+
+/* Base Button - Standard size for all buttons */
+.btn,
 .cta-button,
-.call-button {
+.call-button,
+.order-button,
+.combo-button {
     display: inline-block;
-    margin: 1.5rem auto 2rem;
-    padding: 1rem 2rem;
+    padding: 0.75rem 2rem;
     font-family: var(--font-body);
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: var(--letter-spacing-wide);
     text-transform: uppercase;
     text-align: center;
-    border-radius: 999px;
+    border-radius: 12px;
     background-color: var(--color-accent);
-    color: #ffffff;
+    color: var(--color-text-on-accent);
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(201, 75, 63, 0.3);
     cursor: pointer;
     border: none;
-    /* Ensure buttons are easy to tap on mobile */
+    /* Consistent sizing for all buttons */
     min-height: 44px;
     min-width: 120px;
+    box-sizing: border-box;
 }
 
+.btn:hover,
 .cta-button:hover,
-.call-button:hover {
+.call-button:hover,
+.order-button:hover,
+.combo-button:hover {
     background-color: var(--color-accent-dark);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(201, 75, 63, 0.4);
 }
 
+.btn:active,
 .cta-button:active,
-.call-button:active {
+.call-button:active,
+.order-button:active,
+.combo-button:active {
     transform: translateY(0);
 }
 
@@ -39,7 +55,7 @@
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-top: 2rem;
 }
@@ -47,36 +63,24 @@
 .menu-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
     margin-top: 1rem;
 }
 
 .about-order {
-    text-align: center;
+    /* text-align: left inherited from global rule */
     margin-top: 2rem;
 }
 
-/* Order button specific styling */
-.order-button {
-    background-color: var(--color-accent);
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: var(--letter-spacing-wide);
-    text-transform: uppercase;
-}
-
-.order-button:hover {
-    background-color: var(--color-accent-dark);
-}
+/* Order button uses base .btn styles - no additional styling needed */
 
 /* Mobile responsive */
 @media (max-width: 768px) {
     .hero-buttons,
     .menu-buttons {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .hero-buttons {
@@ -88,6 +92,7 @@
         display: none;
     }
     
+    .hero-buttons .btn,
     .hero-buttons .cta-button,
     .menu-buttons .cta-button,
     .menu-buttons .call-button {

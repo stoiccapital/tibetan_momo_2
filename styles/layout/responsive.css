@@ -35,15 +35,16 @@
 
     .menu-card-horizontal {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
+        /* text-align: left inherited from global rule */
         padding: 1.25rem;
     }
 
     .menu-card-horizontal img {
         width: 100%;
-        max-width: 300px;
+        max-width: 100%;
         height: auto;
+        min-height: 200px;
         margin-top: 1rem;
     }
 
@@ -51,9 +52,7 @@
         height: 350px;
     }
 
-    section {
-        padding: 3rem 1.5rem;
-    }
+    /* Section padding handled by global layout system in section.css */
 }
 
 /* Mobile phones */
@@ -103,10 +102,7 @@
         padding: 1rem;
     }
 
-    /* Reduce excessive spacing on very small screens */
-    .about, .menu, .service, .testimonials {
-        padding: 2rem 1rem;
-    }
+    /* Section padding handled by global layout system in section.css */
 
     .menu-prep-notice {
         margin: 1.5rem auto;
@@ -142,7 +138,5 @@
         font-size: 1rem;
     }
 
-    section {
-        padding: 2rem 0.875rem;
-    }
+    /* Section padding handled by global layout system in section.css */
 } 

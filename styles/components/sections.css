@@ -1,0 +1,778 @@
+/* ========================================
+   SECTIONS.CSS - Consolidated Section Styles
+   ========================================
+   All section-level component styles consolidated
+   from: hero.css, menu.css, services.css, 
+   contact.css, footer.css, legal.css, testimonials.css
+   ======================================== */
+
+/* ===========================
+   Hero section
+============================ */
+
+/* Hero Section */
+.hero {
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('../../images/background.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: scroll;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* text-align: left inherited from global rule */   
+    color: var(--white);
+    /* Padding matches global section layout */
+    padding: 5rem 10%;
+    position: relative;
+    z-index: 0;
+    overflow: visible;
+}
+
+/* Mobile overrides - ensure these take precedence over responsive.css */
+@media (max-width: 768px) {
+    .hero {
+        margin-top: 80px !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        padding: 3rem 5% !important;
+        min-height: 650px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        margin-top: 80px !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        padding: 2.5rem 1.5rem !important;
+        min-height: 600px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero {
+        margin-top: 80px !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        padding: 2rem 1rem !important;
+        min-height: 550px !important;
+    }
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    margin-bottom: 1.5rem;
+    line-height: var(--line-height-tight);
+    font-size: clamp(2.4rem, 6vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--white);
+}
+
+.hero p {
+    font-family: var(--font-body);
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    color: var(--white);
+}
+
+.hero-location {
+    font-family: var(--font-body);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    letter-spacing: 0.3px;
+    margin-bottom: 2rem !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0;
+    padding-top: 0;
+}
+
+/* Mobile overrides - ensure these take precedence */
+@media (max-width: 768px) {
+    .hero-content {
+        padding-top: 0 !important;
+        justify-content: flex-start !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding-top: 0 !important;
+        justify-content: flex-start !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-content {
+        padding-top: 0 !important;
+        justify-content: flex-start !important;
+    }
+}
+
+/* ===========================
+   Menu section
+============================ */
+
+/* Menu Section */
+.menu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0;
+}
+
+.menu-card-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    gap: 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+.menu-card-content {
+    flex: 1;
+    /* text-align: left inherited from global rule */
+}
+
+.menu-card-horizontal img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.menu-card-horizontal h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+}
+
+.menu-card-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.menu-card-horizontal p {
+    font-family: var(--font-body);
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+}
+
+.menu-card-horizontal .price {
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--color-accent);
+    font-size: 1.05rem;
+}
+
+/* Menu Preparation Notice */
+.menu-prep-notice {
+    /* Uses global layout token for content width */
+    max-width: var(--layout-content-max-width);
+    width: 100%;
+    margin: 2rem 0;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 1rem 1.5rem;
+    background-color: var(--color-accent-soft);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 12px;
+    /* text-align: left inherited from global rule */
+}
+
+.menu-prep-notice p {
+    font-family: var(--font-body);
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+}
+
+.menu-prep-notice strong {
+    color: var(--color-accent);
+}
+
+/* Menu Combinations Section */
+.menu-combos {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--color-accent-soft);
+    border-radius: 15px;
+    border: 2px solid var(--color-border);
+}
+
+.menu-combos h3 {
+    font-family: var(--font-display);
+    /* text-align: left inherited from global rule */
+    color: var(--color-accent);
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+}
+
+.combo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.combo-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    /* text-align: left inherited from global rule */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    color: var(--color-text);
+}
+
+.combo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(201, 75, 63, 0.2);
+}
+
+.combo-card h4 {
+    font-family: var(--font-display);
+    color: var(--color-text);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.combo-card p {
+    font-family: var(--font-body);
+    color: var(--color-text-muted);
+    margin: 0;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+}
+
+.combo-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-top: 0.5rem !important;
+}
+
+/* .combo-button uses base .btn styles from buttons.css */
+.combo-button {
+    margin-top: 0.5rem;
+}
+
+/* Mobile responsiveness for combos */
+@media (max-width: 768px) {
+    .menu-combos {
+        padding: 1.5rem;
+        margin: 2rem 1rem;
+    }
+
+    .combo-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Frozen Momos Section */
+.frozen-momos {
+    /* Padding handled by global section layout */
+    /* text-align: left inherited from global rule */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--color-surface-alt);
+}
+
+.frozen-momos h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.frozen-momos p {
+    font-family: var(--font-body);
+    max-width: 700px;
+    margin: 0 0 2rem 0;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    /* text-align: left inherited from global rule */
+    color: var(--color-text);
+    font-size: 1.1rem;
+}
+
+.frozen-momos-cta {
+    /* text-align: left inherited from global rule */
+    margin-top: 1rem;
+}
+
+/* Mobile responsiveness for frozen momos */
+@media (max-width: 768px) {
+    .frozen-momos {
+        padding: 3rem 1rem;
+    }
+
+    .frozen-momos p {
+        font-size: 1rem;
+    }
+}
+
+/* ===========================
+   Services section
+============================ */
+
+/* Service Section */
+.service {
+    /* Padding handled by global section layout */
+    /* text-align: left inherited from global rule */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.service p {
+    font-family: var(--font-body);
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 0 2rem 0;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    /* text-align: left inherited from global rule */
+    color: var(--color-text);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.service-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    color: var(--color-text);
+}
+
+.service-card h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+.service-card p {
+    font-family: var(--font-body);
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+}
+
+/* ===========================
+   Contact section
+============================ */
+
+/* Contact Section */
+.contact-info {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+}
+
+
+.map-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+}
+
+/* ===========================
+   Testimonials section
+============================ */
+
+/* ========================================
+   Testimonials Section - Grid Layout
+   ======================================== */
+
+/* .testimonials padding handled by global section layout in section.css */
+
+.testimonials h2 {
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    /* text-align: left inherited from global rule */
+}
+
+/* Google Rating Badge - Enhanced Social Proof */
+.google-rating {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 2.5rem;
+}
+
+.rating-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(201, 75, 63, 0.08);
+    border: 2px solid var(--color-accent);
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(201, 75, 63, 0.15);
+    transition: all 0.3s ease;
+}
+
+.rating-content:hover {
+    background-color: rgba(201, 75, 63, 0.12);
+    box-shadow: 0 4px 16px rgba(201, 75, 63, 0.2);
+    transform: translateY(-2px);
+}
+
+.google-g-logo {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.rating-text {
+    font-family: var(--font-body);
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.rating-text:hover {
+    color: var(--color-accent-dark);
+}
+
+/* Testimonials Grid Layout */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--color-text);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.stars {
+    font-family: var(--font-display);
+    color: #FFD700;
+    font-size: 1.25rem;
+    /* text-align: left inherited from global rule */
+    letter-spacing: 2px;
+}
+
+.testimonial-card p {
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    /* text-align: left inherited from global rule */
+    margin: 0;
+    flex-grow: 1;
+}
+
+.testimonial-author {
+    font-family: var(--font-body);
+    color: var(--color-accent);
+    font-weight: 600;
+    /* text-align: left inherited from global rule */
+    font-size: 0.95rem;
+    letter-spacing: 0.2px;
+    margin-top: 0.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .testimonials {
+        padding: 3rem 1.5rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+
+    .rating-content {
+        padding: 0.75rem 1rem;
+        flex-direction: row;
+        gap: 0.5rem;
+        /* text-align: left inherited from global rule */
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .rating-text {
+        font-size: 0.9rem;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials {
+        padding: 2.5rem 1rem;
+    }
+
+    .testimonial-card {
+        padding: 1.25rem;
+    }
+
+    .testimonial-card p {
+        font-size: 0.95rem;
+    }
+
+    .stars {
+        font-size: 1.1rem;
+    }
+}
+
+/* Tablet - 2 columns */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop - 3 columns */
+@media (min-width: 1025px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===========================
+   Footer / Legal sections
+============================ */
+
+/* Footer */
+footer {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    padding: 3rem 10%;
+    /* text-align: left inherited from global rule */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 4rem;
+}
+
+.address,
+.opening-hours,
+.contact-details {
+    flex: 1;
+    min-width: 200px;
+}
+
+.address h3,
+.opening-hours h3,
+.contact-details h3 {
+    font-family: var(--font-display);
+    color: var(--tibetan-yellow);
+    margin-bottom: 1rem;
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.address p,
+.opening-hours p,
+.contact-details p {
+    font-family: var(--font-body);
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    margin: 0;
+    color: var(--white);
+    font-size: 1rem;
+}
+
+/* Copyright Section */
+.copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 2rem;
+    /* text-align: left inherited from global rule */
+}
+
+.copyright p {
+    font-family: var(--font-body);
+    margin: 0.5rem 0;
+    color: var(--white);
+    font-size: 0.95rem;
+}
+
+.copyright a {
+    font-family: var(--font-body);
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.copyright a:hover {
+    color: var(--tibetan-yellow);
+    text-decoration: underline;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        /* text-align: left inherited from global rule */
+        gap: 2rem;
+    }
+    
+    .address,
+    .opening-hours,
+    .contact-details {
+        min-width: auto;
+    }
+}
+
+/* Legal Pages Styles */
+/* Legal section - uses global section layout from section.css */
+
+.legal-wrapper {
+    max-width: var(--layout-content-max-width);
+    width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+    /* Padding removed - section provides it */
+    /* text-align: left inherited from global rule */
+}
+
+.legal-wrapper h2:first-child {
+    margin-top: 0;
+}
+
+.legal-wrapper h2,
+.legal-wrapper h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.legal-wrapper h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-accent);
+}
+
+.legal-wrapper h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-text);
+}
+
+.legal-wrapper p {
+    font-family: var(--font-body);
+    margin-bottom: 1.2rem;
+    line-height: var(--line-height-base);
+    letter-spacing: 0.01em;
+    color: var(--color-text);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--tibetan-blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    background-color: var(--tibetan-red);
+    color: var(--white);
+}
+

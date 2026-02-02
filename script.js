@@ -11,7 +11,14 @@ function isMobile() {
 async function loadNavbar() {
     try {
         const response = await fetch('navbar.html');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const navbarHtml = await response.text();
+        
+        if (!navbarHtml || navbarHtml.trim() === '') {
+            throw new Error('Navbar HTML is empty');
+        }
         
         // Find the navbar placeholder or create one
         let navbarContainer = document.getElementById('navbar-container');
@@ -22,12 +29,25 @@ async function loadNavbar() {
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = navbarHtml;
             const navbar = tempDiv.firstElementChild;
-            body.insertBefore(navbar, firstChild);
+            if (navbar) {
+                body.insertBefore(navbar, firstChild);
+            }
         } else {
-            navbarContainer.innerHTML = navbarHtml;
+            // Replace the container div with the actual navbar
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = navbarHtml;
+            const navbar = tempDiv.firstElementChild;
+            if (navbar && navbarContainer.parentNode) {
+                navbarContainer.parentNode.replaceChild(navbar, navbarContainer);
+            }
         }
     } catch (error) {
         console.error('Error loading navbar:', error);
+        // Show visible error in development
+        const container = document.getElementById('navbar-container');
+        if (container) {
+            container.innerHTML = '<p style="color: red; padding: 1rem;">Error loading navbar. Please check console for details.</p>';
+        }
     }
 }
 
@@ -35,7 +55,14 @@ async function loadNavbar() {
 async function loadFooter() {
     try {
         const response = await fetch('footer.html');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const footerHtml = await response.text();
+        
+        if (!footerHtml || footerHtml.trim() === '') {
+            throw new Error('Footer HTML is empty');
+        }
         
         // Find the footer placeholder or create one
         let footerContainer = document.getElementById('footer-container');
@@ -45,23 +72,57 @@ async function loadFooter() {
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = footerHtml;
             const footer = tempDiv.firstElementChild;
-            body.appendChild(footer);
+            if (footer) {
+                body.appendChild(footer);
+            }
         } else {
-            footerContainer.innerHTML = footerHtml;
+            // Replace the container div with the actual footer
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = footerHtml;
+            const footer = tempDiv.firstElementChild;
+            if (footer && footerContainer.parentNode) {
+                footerContainer.parentNode.replaceChild(footer, footerContainer);
+            }
         }
     } catch (error) {
         console.error('Error loading footer:', error);
+        // Show visible error in development
+        const container = document.getElementById('footer-container');
+        if (container) {
+            container.innerHTML = '<p style="color: red; padding: 1rem;">Error loading footer. Please check console for details.</p>';
+        }
     }
 }
 
 // Smooth scroll to anchors
 function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // Handle both #anchor and page.html#anchor links
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href !== '#' && href.length > 1) {
+            
+            // Extract the hash part (e.g., #about from index.html#about or just #about)
+            const hashIndex = href.indexOf('#');
+            if (hashIndex === -1) return; // No hash found
+            
+            const hash = href.substring(hashIndex);
+            if (hash === '#' || hash.length <= 1) return; // Invalid hash
+            
+            // Get current page path (e.g., /index.html or /impressum.html)
+            const currentPath = window.location.pathname;
+            const currentPage = currentPath.split('/').pop() || 'index.html';
+            
+            // Extract page from href (e.g., index.html from index.html#about)
+            const hrefBeforeHash = href.substring(0, hashIndex);
+            const hrefPage = hrefBeforeHash || 'index.html';
+            
+            // Check if it's a same-page anchor
+            const isSamePage = hrefPage === currentPage || (hrefPage === '' && currentPage === 'index.html');
+            
+            if (isSamePage) {
+                // Same page - smooth scroll
                 e.preventDefault();
-                const target = document.querySelector(href);
+                const target = document.querySelector(hash);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -69,17 +130,63 @@ function initSmoothScroll() {
                     });
                 }
             }
+            // If cross-page, let the browser handle navigation normally
         });
     });
 }
 
+// Handle logo click - smooth scroll to top on same page
+function initLogoScroll() {
+    const logoLink = document.querySelector('.logo a[href="index.html"]');
+    if (logoLink) {
+        logoLink.addEventListener('click', function (e) {
+            const currentPath = window.location.pathname;
+            const currentPage = currentPath.split('/').pop() || 'index.html';
+            
+            // If already on index.html, smooth scroll to top
+            if (currentPage === 'index.html') {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            // If on another page, let the browser navigate normally
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Script loaded on:', window.location.pathname);
+    
     // Initialize components
     new CookieConsent();
     initSmoothScroll();
+    initLogoScroll();
+    
+    // Handle smooth scroll on page load if there's a hash in the URL
+    if (window.location.hash) {
+        const hash = window.location.hash;
+        const target = document.querySelector(hash);
+        if (target) {
+            // Small delay to ensure page is fully rendered
+            setTimeout(() => {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        }
+    }
     
     // Load navbar and footer
+    console.log('Loading navbar and footer...');
     Promise.all([loadNavbar(), loadFooter()]).then(() => {
+        console.log('Navbar and footer loaded successfully');
+        // Re-initialize smooth scroll for dynamically loaded navbar links
+        initSmoothScroll();
+        initLogoScroll();
+        
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         const navLinks = document.querySelectorAll('.nav-links a');

@@ -13,13 +13,7 @@
 /* Component Styles */
 @import url('./components/buttons.css');
 @import url('./components/navbar.css');
-@import url('./components/hero.css');
-@import url('./components/menu.css');
-@import url('./components/services.css');
-@import url('./components/contact.css');
-@import url('./components/footer.css');
-@import url('./components/legal.css');
+@import url('./components/sections.css');
 @import url('./components/cookie.css');
 @import url('./components/sticky-bar.css');
 @import url('./components/catering-form.css');
-@import url('../testimonials/testimonials.css');

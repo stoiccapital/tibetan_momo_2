@@ -24,7 +24,7 @@ h2 {
     letter-spacing: -0.01em;
     margin-top: 0;
     margin-bottom: 1.2rem;
-    text-align: center;
+    /* text-align: left inherited from global rule */
     color: var(--color-text);
     position: relative;
 }
@@ -85,9 +85,9 @@ p {
 /* Section-specific paragraph styling */
 .about p,
 section p {
-    text-align: center;
+    /* text-align: left inherited from global rule */
     max-width: 600px;
-    margin: 0 auto 1.5rem;
+    margin: 0 0 1.5rem 0;
 }
 
 /* Add breathing room between text blocks */

@@ -1,49 +1,117 @@
 /* ========================================
-   Section Layout Styles
+   Global Section Layout System
+   ========================================
+   Unified layout system for all page sections.
+   Provides consistent spacing, content width,
+   and background alternation.
    ======================================== */
 
-/* General Section Styles */
+/* ========================================================================
+   BASE SECTION STYLES
+   ========================================================================
+   Applies to all <section> elements by default.
+   Special sections (hero, etc.) can override as needed.
+   ======================================================================== */
+
 section {
-    text-align: center;
-    padding: 4rem 1rem;
+    /* Layout */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     width: 100%;
+    
+    /* Spacing - uses global layout tokens for horizontal padding */
+    padding: 5rem var(--layout-padding-horizontal-desktop);
+    
+    /* Typography - inherits global left alignment from reset.css */
+    
+    /* Content width constraint - prevents content from being too wide */
+    box-sizing: border-box;
 }
 
-/* Alternating section backgrounds for subtle contrast */
-.hero,
-.menu,
-.testimonials {
-    background-color: var(--color-surface);
+/* Section content container - constrains inner content width using global layout token */
+section > *:not(.hero-content):not(.testimonials-grid):not(.map-container):not(.menu-combos) {
+    max-width: var(--layout-content-max-width);
+    width: 100%;
+    margin-left: 0;
+    margin-right: auto;
 }
 
-.about,
-.service,
-.contact {
-    background-color: var(--color-surface-alt);
-}
-
+/* Ensure headings and text align left */
 section h2,
 section h3,
-section p,
+section p {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Center images only */
 section img {
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Content Section (for Impressum and Datenschutz) */
+/* ========================================================================
+   BACKGROUND ALTERNATION SYSTEM
+   ========================================================================
+   Alternating backgrounds for visual rhythm and section separation.
+   Uses semantic color tokens for consistency.
+   ======================================================================== */
+
+/* Primary sections - white background */
+.hero,
+.menu,
+.testimonials,
+.gruppen-image {
+    background-color: var(--color-surface);
+}
+
+/* Secondary sections - cream background for contrast */
+.about,
+.service,
+.contact,
+.frozen-momos {
+    background-color: var(--color-surface-alt);
+}
+
+/* ========================================================================
+   SECTION SPACING VARIANTS
+   ========================================================================
+   Optional spacing modifiers for sections that need different padding.
+   ======================================================================== */
+
+/* Compact spacing - for sections with less content */
+section.compact {
+    padding: 3rem 10%;
+}
+
+/* Spacious spacing - for hero-like sections (except actual hero) */
+section.spacious {
+    padding: 6rem 10%;
+}
+
+/* Full-width sections - removes horizontal padding */
+section.full-width {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* ========================================================================
+   CONTENT SECTION (Legal Pages)
+   ========================================================================
+   Special layout for Impressum and Datenschutz pages.
+   ======================================================================== */
+
 .content-section {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
     margin-top: 80px;
-    text-align: center;
+    /* text-align: left inherited from global rule */
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .content-section h2 {
@@ -61,10 +129,61 @@ section img {
     margin-bottom: 1.5rem;
     line-height: 1.75;
     letter-spacing: 0.01em;
-    text-align: left;
+    /* text-align: left inherited from global rule */
     color: var(--color-text);
 }
 
 .content-section strong {
     color: var(--color-accent);
+}
+
+/* ========================================================================
+   RESPONSIVE SECTION LAYOUT
+   ========================================================================
+   Mobile-first responsive adjustments for section spacing.
+   ======================================================================== */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+    section {
+        padding: 3rem var(--layout-padding-horizontal-tablet);
+    }
+    
+    section.compact {
+        padding: 2rem var(--layout-padding-horizontal-tablet);
+    }
+    
+    section.spacious {
+        padding: 3.5rem var(--layout-padding-horizontal-tablet);
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    section {
+        padding: 2.5rem var(--layout-padding-horizontal-mobile);
+    }
+    
+    section.compact {
+        padding: 2rem var(--layout-padding-horizontal-mobile);
+    }
+    
+    section.spacious {
+        padding: 3rem var(--layout-padding-horizontal-mobile);
+    }
+}
+
+/* Small mobile phones */
+@media (max-width: 360px) {
+    section {
+        padding: 2rem var(--layout-padding-horizontal-small);
+    }
+    
+    section.compact {
+        padding: 1.5rem var(--layout-padding-horizontal-small);
+    }
+    
+    section.spacious {
+        padding: 2.5rem var(--layout-padding-horizontal-small);
+    }
 } 

@@ -15,4 +15,20 @@ html, body {
 
 html {
     scroll-padding-top: 100px;
+}
+
+/* ========================================================================
+   GLOBAL TEXT ALIGNMENT
+   ========================================================================
+   All text elements are left-aligned by default.
+   Buttons and other interactive elements can override as needed.
+   ======================================================================== */
+
+body,
+section,
+h1, h2, h3, h4, h5, h6,
+p, li, td, th,
+div, span,
+label, input, textarea, select {
+    text-align: left;
 } 
