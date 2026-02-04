@@ -112,7 +112,6 @@
 @media (max-width: 360px) {
     .hero {
         min-height: 500px;
-        padding: 0 0.875rem 2.5rem !important;
         margin-top: 80px;
         overflow: visible;
     }
