@@ -9,7 +9,7 @@
     /* Layout */
     width: 100%;
     
-    /* Spacing - uses global layout tokens for horizontal padding */
+    /* Spacing - uses same horizontal padding tokens as global section layout */
     padding: 1rem var(--layout-padding-horizontal-desktop);
     
     /* Positioning */
@@ -190,7 +190,7 @@
 /* Tablet and below */
 @media (max-width: 768px) {
     .navbar {
-        padding: 1rem var(--layout-padding-horizontal-navbar-tablet);
+        padding: 1rem var(--layout-padding-horizontal-tablet);
     }
     
     .navbar-container {
@@ -250,14 +250,14 @@
 /* Mobile phones */
 @media (max-width: 480px) {
     .navbar {
-        padding: 0.875rem var(--layout-padding-horizontal-navbar-mobile);
+        padding: 0.875rem var(--layout-padding-horizontal-mobile);
     }
 }
 
 /* Small mobile phones */
 @media (max-width: 360px) {
     .navbar {
-        padding: 0.75rem var(--layout-padding-horizontal-navbar-small);
+        padding: 0.75rem var(--layout-padding-horizontal-small);
     }
 }
 
