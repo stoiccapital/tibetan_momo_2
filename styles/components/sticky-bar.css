@@ -33,21 +33,31 @@
 }
 
 .sticky-order-button {
+    /* Uses base .btn styles from buttons.css */
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.875rem 1rem;
-    border-radius: 8px;
+    /* Inherit all base button styles from buttons.css */
+    padding: 0.75rem 2rem;
+    border-radius: 12px;
     text-decoration: none;
     font-family: var(--font-body);
-    font-weight: 600;
     font-size: 0.95rem;
+    font-weight: 600;
     letter-spacing: var(--letter-spacing-wide);
     text-transform: uppercase;
+    text-align: center;
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(201, 75, 63, 0.3);
+    cursor: pointer;
+    border: none;
+    min-height: 44px;
+    min-width: 120px;
+    box-sizing: border-box;
 }
 
 .sticky-order-button .button-icon {
@@ -58,17 +68,16 @@
     white-space: nowrap;
 }
 
-/* WhatsApp Button - Primary CTA uses accent color */
-.whatsapp-btn {
-    background-color: var(--color-accent);
-    color: #ffffff;
-}
-
+/* WhatsApp Button - Uses base button hover/active styles from buttons.css */
 .whatsapp-btn:hover,
 .whatsapp-btn:active {
     background-color: var(--color-accent-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(201, 75, 63, 0.3);
+    box-shadow: 0 4px 12px rgba(201, 75, 63, 0.4);
+}
+
+.whatsapp-btn:active {
+    transform: translateY(0);
 }
 
 /* Uber Eats Button - Hidden until restaurant URL is available */
@@ -83,15 +92,16 @@
     }
 }
 
-/* Smaller screens - stack buttons or reduce text */
+/* Smaller screens - maintain button consistency but adjust for space */
 @media (max-width: 400px) {
     .sticky-order-button {
-        font-size: 0.85rem;
-        padding: 0.75rem 0.5rem;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        min-width: 100px;
     }
     
     .sticky-order-button .button-text {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 }
 

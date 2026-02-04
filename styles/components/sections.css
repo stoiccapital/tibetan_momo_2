@@ -137,9 +137,11 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 1200px;
+    max-width: var(--layout-content-max-width);
     width: 100%;
     margin: 0;
+    margin-left: 0;
+    margin-right: auto;
 }
 
 .menu-card-horizontal {
@@ -158,6 +160,7 @@
 .menu-card-content {
     flex: 1;
     /* text-align: left inherited from global rule */
+    text-align: left;
 }
 
 .menu-card-horizontal img {
@@ -335,28 +338,39 @@
 
 .frozen-momos p {
     font-family: var(--font-body);
-    max-width: 700px;
+    max-width: var(--layout-content-max-width);
+    width: 100%;
     margin: 0 0 2rem 0;
+    margin-left: 0;
+    margin-right: auto;
     line-height: 1.75;
     letter-spacing: 0.01em;
-    /* text-align: left inherited from global rule */
+    text-align: left;
     color: var(--color-text);
     font-size: 1.1rem;
 }
 
 .frozen-momos-cta {
-    /* text-align: left inherited from global rule */
+    text-align: left;
     margin-top: 1rem;
+    width: 100%;
 }
 
 /* Mobile responsiveness for frozen momos */
 @media (max-width: 768px) {
     .frozen-momos {
-        padding: 3rem 1rem;
+        align-items: flex-start;
     }
 
     .frozen-momos p {
         font-size: 1rem;
+        text-align: left;
+        width: 100%;
+    }
+    
+    .frozen-momos-cta {
+        text-align: left;
+        width: 100%;
     }
 }
 
@@ -386,11 +400,19 @@
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* Mobile-first: single column by default */
+    grid-template-columns: 1fr;
     gap: 2rem;
     margin-top: 2rem;
     max-width: 1200px;
     width: 100%;
+}
+
+/* Desktop/tablet: two columns from 769px and up */
+@media (min-width: 769px) {
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .service-card {
@@ -566,10 +588,6 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .testimonials {
-        padding: 3rem 1.5rem;
-    }
-
     .testimonials-grid {
         grid-template-columns: 1fr;
         gap: 1.25rem;
@@ -595,10 +613,6 @@
 }
 
 @media (max-width: 480px) {
-    .testimonials {
-        padding: 2.5rem 1rem;
-    }
-
     .testimonial-card {
         padding: 1.25rem;
     }
@@ -634,8 +648,8 @@
 footer {
     background-color: var(--color-accent);
     color: #ffffff;
-    padding: 3rem 10%;
-    /* text-align: left inherited from global rule */
+    padding: 3rem var(--layout-padding-horizontal-desktop);
+    text-align: left;
 }
 
 .footer-content {
@@ -645,6 +659,10 @@ footer {
     margin-bottom: 2rem;
     flex-wrap: wrap;
     gap: 4rem;
+    max-width: var(--layout-content-max-width);
+    width: 100%;
+    margin-left: 0;
+    margin-right: auto;
 }
 
 .address,
@@ -652,6 +670,7 @@ footer {
 .contact-details {
     flex: 1;
     min-width: 200px;
+    text-align: left;
 }
 
 .address h3,
@@ -680,7 +699,11 @@ footer {
 .copyright {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding-top: 2rem;
-    /* text-align: left inherited from global rule */
+    text-align: left;
+    max-width: var(--layout-content-max-width);
+    width: 100%;
+    margin-left: 0;
+    margin-right: auto;
 }
 
 .copyright p {
@@ -704,10 +727,26 @@ footer {
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+    footer {
+        padding: 3rem var(--layout-padding-horizontal-tablet);
+    }
+    
     .footer-content {
         flex-direction: column;
-        /* text-align: left inherited from global rule */
+        text-align: left;
         gap: 2rem;
+        align-items: flex-start;
+    }
+    
+    .address,
+    .opening-hours,
+    .contact-details {
+        text-align: left;
+        width: 100%;
+    }
+    
+    .copyright {
+        text-align: left;
     }
     
     .address,
